@@ -21,7 +21,7 @@ func nowait(urls []string) {
 			Deadline: time.Now().Add(20 * time.Second),
 		}).DialContext,
 	}
-	client := &http.Client{Transport: transport}
+	client := &http.Client{Transport: transport, Timeout: 1 * time.Second}
 
 	for i, v := range urls {
 		u := "https://" + v + "/"
